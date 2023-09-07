@@ -2,18 +2,9 @@
 
 # 1. libraries ---------------------------------------------------------------
 
-library(tidycensus)
-library(tidyverse)
-library(lubridate)
-library(ggspatial)
-library(arcpullr)
-library(pdftools)
-library(cowplot)
-library(tigris)
-library(raster)
-library(readxl)
-library(units)
-library(sf)
+if (!require("pacman")) install.packages("pacman")
+
+pacman::p_load('tidycensus','tidyverse','lubridate','ggspatial','arcpullr','pdftools','cowplot','tigris','raster','readxl','units','skimr','sf')
 
 options(scipen = 999)
 
@@ -54,6 +45,8 @@ pop.est.00 <- get_decennial(geography = "tract", # geogaphic units
                    sumfile = "sf1",              # ACS 5-year data set type
                    output = "wide"               # data structure as a wide file
 )
+
+# skim(pop.est.00)
 
 ## visually reviewing the shapefiles
 
